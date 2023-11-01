@@ -58,28 +58,26 @@ exports.getData = async (req, res) => {
     //         `;
     let sqlUser = `
     select country_name,
-                    years,
-                    CAST(population AS bigint) AS population,
-                    region from populations
+    years,
+    CAST(population AS bigint) AS population,
+    region from populations
 where country_name not in ('Less developed regions',
-                                                    'Less developed regions, excluding least developed countries',
-                                                    'Asia (UN)',
-                                                    'Less developed regions, excluding China',
-                                                    'Upper-middle-income countries',
-                                                     'More developed regions',
-                                                     'Lower-middle-income countries',
-                                                     'High-income countries',
-                                                     'Europe (UN)','Africa (UN)','Oceania (UN)',
-                                                     'Least developed countries',
-                                                     'Latin America and the Caribbean (UN)',
-                                                     'Northern America (UN)',
-                                                     'Low-income countries',
-                                                     'Land-locked developing countries (LLDC)',
-                                                     'Small island developing states (SIDS)'
-                                                    ) ${filter}
-ORDER BY years ASC, population DESC 
-
-    `
+                                    'Less developed regions, excluding least developed countries',
+                                    'Asia (UN)',
+                                    'Less developed regions, excluding China',
+                                    'Upper-middle-income countries',
+                                     'More developed regions',
+                                     'Lower-middle-income countries',
+                                     'High-income countries',
+                                     'Europe (UN)','Africa (UN)','Oceania (UN)',
+                                     'Least developed countries',
+                                     'Latin America and the Caribbean (UN)',
+                                     'Northern America (UN)',
+                                     'Low-income countries',
+                                     'Land-locked developing countries (LLDC)',
+                                     'Small island developing states (SIDS)'
+                                    ) ${filter}
+ORDER BY years ASC, population DESC`
     let data = await pool.query(sqlUser);
     res.json(data.rows);
   } catch (err) {
