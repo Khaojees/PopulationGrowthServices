@@ -50,7 +50,7 @@ exports.getData = async (req, res) => {
                   country_name,
                   years,
                   population,
-                  region,
+                  region
                 FROM RankedData
                 WHERE row_num <= 13
                 ORDER BY years ASC, population DESC;
