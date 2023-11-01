@@ -92,3 +92,14 @@ exports.getCountry = async (req, res) => {
     res.json(err);
   }
 };
+
+
+exports.tryy = async (req, res) => {
+  try {
+    let sqlUser = `select * from populations`;
+    let data = await pool.query(sqlUser);
+    res.json(data.rows);
+  } catch (err) {
+    res.json(err);
+  }
+};
