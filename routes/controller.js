@@ -28,7 +28,7 @@ exports.getData = async (req, res) => {
                     population,
                       region,
                     ROW_NUMBER() OVER (PARTITION BY years ORDER BY years ASC, population DESC) AS row_num
-                  FROM public.populations
+                  FROM populations
                       where country_name not in ('Less developed regions',
                                                     'Less developed regions, excluding least developed countries',
                                                     'Asia (UN)',
