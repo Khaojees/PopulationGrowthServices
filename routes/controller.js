@@ -26,7 +26,6 @@ exports.getData = async (req, res) => {
                     country_name,
                     years,
                     population,
-                      region,
                     ROW_NUMBER() OVER (PARTITION BY years ORDER BY years ASC, population DESC) AS row_num
                   FROM populations
                       where country_name not in ('Less developed regions',
@@ -49,8 +48,7 @@ exports.getData = async (req, res) => {
                 SELECT
                   country_name,
                   years,
-                  population,
-                  region
+                  population
                 FROM RankedData
                 WHERE row_num <= 13
                 ORDER BY years ASC, population DESC;
